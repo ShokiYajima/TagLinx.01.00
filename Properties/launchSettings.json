@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TagLinx.01.00 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "TagLinx.01.00 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

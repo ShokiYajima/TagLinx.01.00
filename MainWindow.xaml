@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="TagLinx._01._00.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TagLinx._01._00"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="using:TagLinx._01._00.Controls"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d"
+    Title="TagLinx.01.00">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid x:Name="MainGrid" 
+          Background="#1E1E1E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--１行目-->
+        <Border BorderBrush="Gray"
+                BorderThickness="0,0,0,1">
+
+        </Border>
+        
+
+
+        <!--２行目-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <!--ナビゲーション-->
+            <Border Grid.Column="0" 
+                    BorderBrush="Gray" 
+                    BorderThickness="0,0,0,1">
+                <usercontrols:Navigation />
+            </Border>
+            <!--アドレスバー-->
+            <Border Grid.Column="1" 
+                    BorderBrush="Gray" 
+                    BorderThickness="0,0,0,1">
+                <usercontrols:AddressBar x:Name="AddressBar"
+                                         CurrentPath="C:\"/>
+            </Border>
+            <!--ツールボックス-->
+            <Border Grid.Column="2" 
+                    BorderBrush="Gray" 
+                    BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <AppBarSeparator/>
+                    <Button Width="30" Height="30"
+                            BorderBrush="Transparent" BorderThickness="0"
+                            Background="Transparent" Foreground="White"
+                            Margin="5,0" Padding="0">
+                        <FontIcon Glyph="&#xE99A;" FontSize="18"/>
+                    </Button>
+                    <Button Width="30" Height="30"
+                            BorderBrush="Transparent" BorderThickness="0"
+                            Background="Transparent" Foreground="White"
+                            Margin="5,0" Padding="0">
+                        <FontIcon Glyph="&#xE713;" FontSize="18"/>
+                    </Button>
+                    <AppBarSeparator/>
+                </StackPanel>
+            </Border>
+            <!--検索バー-->
+            <Border Grid.Column="3" 
+                    BorderBrush="Gray" 
+                    BorderThickness="0,0,0,1">
+                <AutoSuggestBox PlaceholderText="検索" QueryIcon="Find" Margin="5,5"/>
+            </Border>
+        </Grid>
+
+
+
+        <!--３行目-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="QuickAccessZone"
+                                  MinWidth="100" MaxWidth="300" Width="200"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition x:Name="WorkSpaceZone"
+                                  MinWidth="100" MaxWidth="300" Width="200"/>
+            </Grid.ColumnDefinitions>
+            <!--１列目(QuickAccessZone)-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <!--２列目(DirectoryList)-->
+            <Border Grid.Column="1" 
+                    BorderBrush="Gray" 
+                    BorderThickness="1,0,1,0">
+                <usercontrols:FileList x:Name="FileList"
+                                       CurrentPath="{Binding CurrentPath, ElementName=AddressBar}"/>
+            </Border>
+            <!--３列目-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <!-- Splitter -->
+            <controls:GridSplitter Grid.Column="1"
+                                   Width="16"
+                                   HorizontalAlignment="Left"
+                                   ResizeBehavior="BasedOnAlignment"
+                                   ResizeDirection="Auto"
+                                   Background="Transparent">
+                <controls:GridSplitter.RenderTransform>
+                    <TranslateTransform X="-7.5"/>
+                </controls:GridSplitter.RenderTransform>
+            </controls:GridSplitter>
+            <controls:GridSplitter Grid.Column="1"
+                                   Width="16"
+                                   HorizontalAlignment="Right"
+                                   ResizeBehavior="BasedOnAlignment"
+                                   ResizeDirection="Auto"
+                                   Background="Transparent">
+                <controls:GridSplitter.RenderTransform>
+                    <TranslateTransform X="7.5"/>
+                </controls:GridSplitter.RenderTransform>
+            </controls:GridSplitter>
+        </Grid>
+    </Grid>
+</Window>
