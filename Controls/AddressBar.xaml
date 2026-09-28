@@ -13,6 +13,7 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         PlaceholderText="パスを入力..."
+                        Text="{x:Bind CurrentPath, Mode=OneWay}"
                         TextChanged="AddressBar_AutoSuggestBox_TextChanged"
                         KeyDown="AddressBar_AutoSuggestBox_KeyDown"
                         SuggestionChosen="AddressBar_AutoSuggestBox_SuggestionChosen"/>

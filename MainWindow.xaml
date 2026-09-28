@@ -104,7 +104,7 @@
                     BorderBrush="Gray" 
                     BorderThickness="1,0,1,0">
                 <usercontrols:FileList x:Name="FileList"
-                                       CurrentPath="{Binding CurrentPath, ElementName=AddressBar}"/>
+                                       CurrentPath="{Binding CurrentPath, ElementName=AddressBar,Mode=OneWay}"/>
             </Border>
             <!--３列目-->
             <Grid Grid.Column="2">

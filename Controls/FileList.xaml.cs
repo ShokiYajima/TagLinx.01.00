@@ -63,6 +63,13 @@ public sealed partial class FileList : UserControl
         
         // ListViewとItemを接続
         FileListView.ItemsSource = Items;
+        Loaded += FileList_Loaded;
+    }
+
+    private async void FileList_Loaded(object sender, RoutedEventArgs e)
+    {
+        // 初期値では変更通知が発生しないため、表示時に一覧を読み込む。
+        await LoadDirectory(CurrentPath);
     }
 
     /// <summary>

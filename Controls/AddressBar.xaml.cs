@@ -87,14 +87,18 @@ public sealed partial class AddressBar : UserControl
             {
                 suitableItems.Add("No results found");
             }
-            sender.ItemsSource = suitableItems;
+            sender.ItemsSource = suitableItems;            
         }
 
     }
 
     private void AddressBar_AutoSuggestBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
-
+        if (e.Key == Windows.System.VirtualKey.Enter)
+        {
+            CurrentPath = AddressBar_AutoSuggestBox.Text;
+            e.Handled = true;
+        }
     }
 
     private void AddressBar_AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
