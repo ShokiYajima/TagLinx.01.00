@@ -6,16 +6,24 @@
     xmlns:local="using:TagLinx._01._00.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <Grid>
-        <AutoSuggestBox x:Name="AddressBar_AutoSuggestBox"
-                        Margin="5"
+    mc:Ignorable="d"
+    x:Name="Root">
+    <!--<Grid>-->
+    <AutoSuggestBox x:Name="AddressBar_AutoSuggestBox"
+                        Margin="5" Foreground="Transparent"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        PlaceholderText="パスを入力..."
-                        Text="{x:Bind CurrentPath, Mode=OneWay}"
+                        Text="{Binding CurrentPath, ElementName=Root, Mode=OneWay}"
+                        GettingFocus="AddressBar_AutoSuggestBox_GettingFocus"
+                        GotFocus="AddressBar_AutoSuggestBox_GotFocus"
+                        LostFocus="AddressBar_AutoSuggestBox_LostFocus"
                         TextChanged="AddressBar_AutoSuggestBox_TextChanged"
-                        KeyDown="AddressBar_AutoSuggestBox_KeyDown"
-                        SuggestionChosen="AddressBar_AutoSuggestBox_SuggestionChosen"/>
-    </Grid>
+                        SuggestionChosen="AddressBar_AutoSuggestBox_SuggestionChosen"
+                        QuerySubmitted="AddressBar_AutoSuggestBox_QuerySubmitted">
+        <AutoSuggestBox.Resources>
+            <SolidColorBrush x:Key="TextControlForegroundPointerOver"
+                             Color="Transparent"/>
+        </AutoSuggestBox.Resources>
+    </AutoSuggestBox>
+        <!--</Grid>-->
 </UserControl>

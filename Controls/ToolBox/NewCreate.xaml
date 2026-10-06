@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="TagLinx._01._00.Controls.ToolBox.NewCreate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TagLinx._01._00.Controls.ToolBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Button Width="100" Height="30"
+                BorderBrush="Transparent" BorderThickness="0"
+                Background="Transparent" Foreground="White"
+                Margin="5,0" Padding="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                <FontIcon Glyph="&#xECC8;" FontSize="18"/>
+                <TextBlock Text="新規作成" FontSize="13"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

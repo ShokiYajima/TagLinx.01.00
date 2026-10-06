@@ -15,6 +15,15 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Controls\AddressBar.xaml" />
+    <None Remove="Controls\ToolBox\Copy.xaml" />
+    <None Remove="Controls\ToolBox\Cut.xaml" />
+    <None Remove="Controls\ToolBox\Delete.xaml" />
+    <None Remove="Controls\ToolBox\Display.xaml" />
+    <None Remove="Controls\ToolBox\Macro.xaml" />
+    <None Remove="Controls\ToolBox\NewCreate.xaml" />
+    <None Remove="Controls\ToolBox\Option.xaml" />
+    <None Remove="Controls\ToolBox\Paste.xaml" />
+    <None Remove="Controls\ToolBox\Sort.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +65,83 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\Navigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>..\..\..\VisualStadio研究所\DLL\WinUI3\Common\Common\obj\Release\net8.0-windows10.0.19041.0\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Convert">
+      <HintPath>..\..\..\VisualStadio研究所\DLL\WinUI3\Convert\Convert\obj\Release\net8.0-windows10.0.19041.0\Convert.dll</HintPath>
+    </Reference>
+    <Reference Include="Read.FileSystem">
+      <HintPath>..\..\..\VisualStadio研究所\DLL\WinUI3\Read\FileSystem\FileSystem\obj\Release\net8.0-windows10.0.19041.0\Read.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Update.FileSystem">
+      <HintPath>..\..\..\VisualStadio研究所\DLL\WinUI3\Update\FileSystem\FileSystem\obj\Release\net8.0-windows10.0.19041.0\Update.FileSystem.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\BreadcrumbAddressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Display.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Sort.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Delete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Share.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Rename.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Paste.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Cut.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\NewCreate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Option.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ToolBox\Macro.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

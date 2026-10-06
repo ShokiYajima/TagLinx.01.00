@@ -8,81 +8,91 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <UserControl.Resources>
+        <!--************************************************************-->
+        <!-- Header                                                     -->
+        <!--************************************************************-->
+        <!--詳細-->
+        <DataTemplate x:Key="Header_Detail">
+            <Grid ColumnSpacing="10" Height="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="名前" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Text="更新日時" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Text="種類" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Text="サイズ" FontWeight="Bold"/>
+                <TextBlock Grid.Column="4" Text="タグ" FontWeight="Bold"/>
+                <TextBlock Grid.Column="5" Text="コメント" FontWeight="Bold"/>
+            </Grid>
+        </DataTemplate>
+        <!--その他-->
+        <DataTemplate x:Key="Header_Other"/>
+        
+        <!--************************************************************-->
+        <!-- Item                                                       -->
+        <!--************************************************************-->
+        <!--詳細-->
+        <DataTemplate x:Key="Item_Detail">
+            <Grid ColumnSpacing="10" Height="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Image x:Name="Image_TextBlock"  Source="{Binding Icon}"
+                           Width="16" Height="16"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="Name_TextBlock" Text="{Binding Name}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" x:Name="WriteTime_TextBlock" Text="{Binding WriteTimeText}" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="2" x:Name="Type_TextBlock" Text="{Binding Type}" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="3" x:Name="Size_TextBlock" Text="{Binding SizeText}" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="4" x:Name="Tag_TextBlock" Text="{Binding Tag}" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="5" x:Name="Comment_TextBlock" Text="{Binding Comment}" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <!--一覧-->
+        <DataTemplate x:Key="Item_List">
+            <Grid ColumnSpacing="10" Height="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Image x:Name="Image_TextBlock"  Source="{Binding Icon}"
+                           Width="16" Height="16"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="Name_TextBlock" Text="{Binding Name}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <!--************************************************************-->
+    <!-- 本体                                                       -->
+    <!--************************************************************-->
     <Grid>
         <ListView x:Name="FileListView"
+                  HeaderTemplate="{StaticResource Header_Detail}"
+                  ItemTemplate="{StaticResource Item_Detail}"
                   IsItemClickEnabled="True"
                   ItemClick="FileListView_ItemClick"
-                  SelectionMode="Extended">
-            <!--ヘッダ-->
-            <ListView.Header>
-                <Grid ColumnSpacing="10" Height="32">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="名前" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Text="更新日時" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="2" Text="種類" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="3" Text="サイズ" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="4" Text="タグ" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="5" Text="コメント" FontWeight="Bold"/>
-                </Grid>
-            </ListView.Header>
-            <!--ファイルリスト-->
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid ColumnSpacing="10" Height="32">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal" Grid.Column="0">
-                            <!--アイコン-->
-                            <Image x:Name="Image_TextBlock" 
-                                   Source="{Binding Icon}"
-                                   VerticalAlignment="Center"/>
-                            <!--名前-->
-                            <TextBlock x:Name="Name_TextBlock" 
-                                       Text="{Binding Name}"
-                                       VerticalAlignment="Center"/>
-                        </StackPanel>
-                        <!--更新日時-->
-                        <TextBlock Grid.Column="1" 
-                                   x:Name="WriteTime_TextBlock" 
-                                   Text="{Binding WriteTimeText}" 
-                                   VerticalAlignment="Center"/>
-                        <!--種類-->
-                        <TextBlock Grid.Column="2" 
-                                   x:Name="Type_TextBlock" 
-                                   Text="{Binding Type}" 
-                                   VerticalAlignment="Center"/>
-                        <!--サイズ-->
-                        <TextBlock Grid.Column="3" 
-                                   x:Name="Size_TextBlock" 
-                                   Text="{Binding SizeText}" 
-                                   VerticalAlignment="Center"/>
-                        <!--タグ-->
-                        <TextBlock Grid.Column="4" 
-                                   x:Name="Tag_TextBlock" 
-                                   Text="{Binding Tag}" 
-                                   VerticalAlignment="Center"/>
-                        <!--コメント-->
-                        <TextBlock Grid.Column="5" 
-                                   x:Name="Comment_TextBlock" 
-                                   Text="{Binding Comment}" 
-                                   VerticalAlignment="Center"/>
-
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                  SelectionMode="Extended"/>
     </Grid>
 </UserControl>

@@ -6,7 +6,8 @@
     xmlns:local="using:TagLinx._01._00"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:usercontrols="using:TagLinx._01._00.Controls"
+    xmlns:UserControls="using:TagLinx._01._00.Controls"
+    xmlns:ToolBox="using:TagLinx._01._00.Controls.ToolBox"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d"
     Title="TagLinx.01.00">
@@ -19,7 +20,8 @@
           Background="#1E1E1E">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -36,55 +38,69 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <!--ナビゲーション-->
             <Border Grid.Column="0" 
                     BorderBrush="Gray" 
                     BorderThickness="0,0,0,1">
-                <usercontrols:Navigation />
+                <UserControls:Navigation />
             </Border>
             <!--アドレスバー-->
             <Border Grid.Column="1" 
                     BorderBrush="Gray" 
                     BorderThickness="0,0,0,1">
-                <usercontrols:AddressBar x:Name="AddressBar"
-                                         CurrentPath="C:\"/>
+                <Grid>
+                    <UserControls:AddressBar x:Name="AddressBar"/>
+                    <UserControls:BreadcrumbAddressBar x:Name="BreadcrumbAddressBar" 
+                                                       CurrentPath="{Binding CurrentPath, ElementName=AddressBar, Mode=TwoWay}"/>
+                </Grid>
             </Border>
-            <!--ツールボックス-->
+            <!--検索バー-->
             <Border Grid.Column="2" 
                     BorderBrush="Gray" 
                     BorderThickness="0,0,0,1">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <AppBarSeparator/>
-                    <Button Width="30" Height="30"
-                            BorderBrush="Transparent" BorderThickness="0"
-                            Background="Transparent" Foreground="White"
-                            Margin="5,0" Padding="0">
-                        <FontIcon Glyph="&#xE99A;" FontSize="18"/>
-                    </Button>
-                    <Button Width="30" Height="30"
-                            BorderBrush="Transparent" BorderThickness="0"
-                            Background="Transparent" Foreground="White"
-                            Margin="5,0" Padding="0">
-                        <FontIcon Glyph="&#xE713;" FontSize="18"/>
-                    </Button>
-                    <AppBarSeparator/>
-                </StackPanel>
-            </Border>
-            <!--検索バー-->
-            <Border Grid.Column="3" 
-                    BorderBrush="Gray" 
-                    BorderThickness="0,0,0,1">
-                <AutoSuggestBox PlaceholderText="検索" QueryIcon="Find" Margin="5,5"/>
+                <AutoSuggestBox PlaceholderText="検索" QueryIcon="Find" 
+                                HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"/>
             </Border>
         </Grid>
 
-
-
+        
+        
         <!--３行目-->
         <Grid Grid.Row="2">
+            <!--ツールボックス-->
+            <Border BorderBrush="Gray" 
+                    BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="5">
+                    <ToolBox:NewCreate/>
+
+                    <AppBarSeparator Height="40" HorizontalAlignment="Center"/>
+                    
+                    <ToolBox:Cut/>
+                    <ToolBox:Copy/>
+                    <ToolBox:Paste/>
+                    <ToolBox:Rename/>
+                    <ToolBox:Share/>
+                    <ToolBox:Delete/>
+
+                    <AppBarSeparator Height="40" HorizontalAlignment="Center"/>
+                    
+                    <ToolBox:Sort/>
+                    <ToolBox:Display/>
+
+                    <AppBarSeparator Height="40" HorizontalAlignment="Center"/>
+                    
+                    <ToolBox:Macro/>
+                    <ToolBox:Option/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+            
+            
+        <!--４行目-->
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="QuickAccessZone"
                                   MinWidth="100" MaxWidth="300" Width="200"/>
@@ -103,8 +119,8 @@
             <Border Grid.Column="1" 
                     BorderBrush="Gray" 
                     BorderThickness="1,0,1,0">
-                <usercontrols:FileList x:Name="FileList"
-                                       CurrentPath="{Binding CurrentPath, ElementName=AddressBar,Mode=OneWay}"/>
+                <UserControls:FileList x:Name="FileList"
+                                       CurrentPath="{Binding CurrentPath, ElementName=AddressBar, Mode=TwoWay}"/>
             </Border>
             <!--３列目-->
             <Grid Grid.Column="2">
